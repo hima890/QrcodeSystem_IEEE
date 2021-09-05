@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_mail import Mail, Message
 from config import Config
+import os
 # from flask_whooshalchemy import whoosh
 
 
@@ -13,7 +14,7 @@ bcrypt = Bcrypt()
 mail = Mail()
 
 
-
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #the main app function
 def create_app(config_class=Config):
     # the Flask class instaince 

@@ -3,9 +3,10 @@ import os
 import qrcode
 from PIL import Image
 from models import theAccepted
-from theFormForaccepted import mail, Message
+from theFormForaccepted import mail, Message, PROJECT_ROOT
 
 
+FULL_PATH = os.path.join(PROJECT_ROOT, 'theFormForaccepted/form/qrCode_images')
 
 qr = qrcode.QRCode(
     version=1,
@@ -26,5 +27,5 @@ def newLinkGanaretor(full_name, email):
     logo_display.thumbnail((200, 100))
     logo_pos = ((img.size[0] - logo_display.size[0]) // 2, (img.size[1] - logo_display.size[1]) // 2)
     img.paste(logo_display, logo_pos)
-    img.save("theFormForaccepted/form/qrCode_images/%s.png" % (newLink))
+    img.save(os.path.join(FULL_PATH,"%s.png" % (newLink)))
     return newLink

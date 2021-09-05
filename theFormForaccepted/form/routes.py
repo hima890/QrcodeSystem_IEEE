@@ -2,7 +2,7 @@ from flask import Blueprint, app, redirect, render_template, url_for, request, j
 from sqlalchemy.orm import query
 from theFormForaccepted import db
 from models import theAccepted
-from theFormForaccepted.form.utilty import newLinkGanaretor
+from theFormForaccepted.form.utilty import newLinkGanaretor, FULL_PATH
 from theFormForaccepted import mail, Message, create_app as app
 import os
 
@@ -35,11 +35,13 @@ def index():
 
         We would like to note that you must bring a personal laptop with internet, and there will be a small competition to attend, and entry to the hall will be via QR Code'''
         qrcode_path = "qrCode_images/%s.png" % (hashLink)
-        with home_page.open_resource(qrcode_path)  as qrcode:
-            msg.attach(qrcode_path,"image/png", qrcode.read())
+
+    
+        with home_page.open_resource(os.path.join(FULL_PATH,"%s.png" % (hashLink)))  as qrcode:
+            msg.attach(os.path.join(FULL_PATH,"%s.png" % (hashLink)),"image/png", qrcode.read())
         mail.send(msg)
-        if os.path.exists("theFormForaccepted/form/qrCode_images/%s.png" % (hashLink)):
-            os.remove("theFormForaccepted/form/qrCode_images/%s.png" % (hashLink))
+        if os.path.exists((os.path.join(FULL_PATH,"%s.png" % (hashLink)))):
+            os.remove(os.path.join(FULL_PATH,"%s.png" % (hashLink)))
             print("the file has been remove")
         else:
             print("The file does not exist")
