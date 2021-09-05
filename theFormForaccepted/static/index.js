@@ -64,3 +64,6 @@ function test(){
 };
 
 
+function show(){
+  alert("Un e-mail have been sent to the provied emal address");
+}

@@ -43,6 +43,7 @@ def index():
             print("the file has been remove")
         else:
             print("The file does not exist")
-
+        flash("Un E-mail have been send to the provite email!", "success")
+        return redirect(url_for("home.index", title="IEEE"))
 
     return render_template("form.html", titel="IEEE")
