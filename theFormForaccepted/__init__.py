@@ -35,5 +35,5 @@ def create_app(config_class=Config):
     from theFormForaccepted.errors.routes import errors
 
     app.register_blueprint(home_page)
-    app.register_blueprint(errors)
+    # app.register_blueprint(errors)
     return app
