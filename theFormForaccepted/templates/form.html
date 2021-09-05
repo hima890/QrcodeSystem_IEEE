@@ -1,0 +1,42 @@
+{%extends "layout.html"%}
+{%block title%}{{titel}}{%endblock%}
+{%block main%}
+<nav class="navbar navbar-light bg-light" style="margin-bottom: 3rem;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{{url_for('static', filename='ieeeLogo.png')}}" alt="ieeeLogo" class="d-inline-block align-text-top"
+      style="width: 20%;
+    max-height: 100%;">
+    </a>
+    <a href="#"
+    style="position: absolute;
+    right: 1%;
+    text-decoration: none;
+    font-size: xx-large;">
+        IEEE AL NELLIAN BRANCH
+    </a>
+  </div>
+</nav>
+
+<main>
+    <div class="container">
+        <form action="{{url_for('home.index')}}" method="POST">
+            <div class="mb-3">
+                <label for="full_name" class="form-label">Full name</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" required onchange="test();">
+                <span id="error1"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required onchange="test();">
+                <span id="error2"></span>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" disabled id="submit">Submit</button>
+        </form>
+    </div>
+    
+</main>
+{%endblock%}
