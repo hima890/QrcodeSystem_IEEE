@@ -15,10 +15,10 @@ def index():
     if request.method == "POST":
         full_name = request.form.get("full_name")
         email = request.form.get("email")
-        query_check = theAccepted.query.filter_by(ipemail=ipemail).first()
+        query_check = theAccepted.query.filter_by(email=email).first()
         if query_check:
             return render_template("500.html", title="Error")
-            
+
         hashLink = newLinkGanaretor(full_name=full_name, email=email)
         newRecord = theAccepted(name=full_name, email=email, hashLink = hashLink, 
         imageNumber = hashLink)
