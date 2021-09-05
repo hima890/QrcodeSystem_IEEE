@@ -27,5 +27,6 @@ def newLinkGanaretor(full_name, email):
     logo_display.thumbnail((200, 100))
     logo_pos = ((img.size[0] - logo_display.size[0]) // 2, (img.size[1] - logo_display.size[1]) // 2)
     img.paste(logo_display, logo_pos)
+    print(PROJECT_ROOT)
     img.save(os.path.join(FULL_PATH,"%s.png" % (newLink)))
     return newLink
