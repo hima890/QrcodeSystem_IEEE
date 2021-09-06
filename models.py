@@ -11,6 +11,7 @@ class theAccepted(db.Model):
     email = db.Column(db.String(200), nullable=False, unique=True)
     hashLink = db.Column(db.String(200), nullable=False)
     imageNumber = db.Column(db.String(200), nullable=False)
+    uniqNumber = db.Column(db.Integer(), nullable=False)
     the_link_use = db.Column(db.Integer(), nullable=False, default=0)
     date_created = db.Column(db.DateTime, default=datetime.now())
     
