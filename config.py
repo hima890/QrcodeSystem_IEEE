@@ -6,8 +6,8 @@ class Config:
     MYSQL_DATABASE_CHARSET = 'utf8mb4'
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_DEFAULT_SENDER = "IEEENB@gmail.com"
-    MAIL_USERNAME = 'hfibrahim90@gmail.com'
-    MAIL_PASSWORD = 'majoja12345@@'
+    MAIL_USERNAME = 'helloxtreme15@gmail.com'
+    MAIL_PASSWORD = 'H1xtreme5'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
   

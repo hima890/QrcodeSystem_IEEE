@@ -19,26 +19,27 @@ def index(): # function call when the route call
         query_check = theAccepted.query.filter_by(email=email).first() # check if the email address in the database
         if query_check: # if its in the database the system well relode the page with a flash message that show the erroe
             flash("The E-mail that you enter is alrady in our database!", 'danger')
-            return redirect(url_for("home.index", title="IEEE"))
+            return redirect(url_for("home.index", title="IEEE QRcode sytem"))
 
         # if not the system well continue
         data = newLinkGanaretor(full_name=full_name, email=email)
         hashLink = data["newLink"] # newLinkGanaretor is a function that generate a uniq id and qrcode
         uniqNumber = data["newNumberId"] # get the uniq number
-        msg = Message('IEEEEXTREME competition',sender =  ('IEEEEXTREME committee', 'hfibrahim90@gmail.com'),  recipients = [email]) # setup the message sender and recipients and the haer
+        msg = Message('IEEEEXTREME competition',sender =  ('IEEEEXTREME committee', 'helloxtreme15@gmail.com'),  recipients = [email]) # setup the message sender and recipients and the haer
         # the message main body
         msg.body = '''Id: {}
- Sir : {}
- Peace, mercy and blessings of God
-         And yet,
- The IEEE Management is pleased to inform you that you have been selected to attend the Hello Xtreme event
- It will be held in the Hall of the Director of Al-Neelain University on Saturday, 11/9/2021 at 10AM
- All details will be published on the (IEEE Al Neelain University Student Branch) Facebook page.
+Sir : {}
+Peace, mercy and blessings of God
+        And yet,
+The IEEE Management is pleased to inform you that you have been selected to attend the Hello Xtreme event
+It will be held in the Hall of the Director of Al-Neelain University on Saturday, 11/9/2021 at 10AM
+All details will be published on the (IEEE Al Neelain University Student Branch) Facebook page
 
- * We would like to note that there will be an ongoing competition.  If you wish to participate, you must bring a personal laptop with internet, and thank you for your interest.
+* We would like to note that there will be an ongoing competition. If you wish to participate, you must bring a personal laptop with internet, and thank you for your interest. 
 
- Facebook page link:
- https://www.facebook.com/IEEEANUSB/
+Follow us on our page to learn more about 
+How to enter the competition :
+https://www.facebook.com/IEEEANUSB/
 
 * Entry to the hall will be via QR Code which is down below 👇
 '''.format(uniqNumber, full_name)
@@ -55,7 +56,7 @@ def index(): # function call when the route call
                 print("The file does not exist")
         except Exception as e: # If an error occurs while sending the email, it will be redirected to the home page with an error message
             flash("The email was not sent, please check that the security features are enabled in the account settings and that the server supports writing files", 'danger')
-            return redirect(url_for("home.index", title="IEEE"))
+            return redirect(url_for("home.index", title="IEEE QRcode sytem"))
 
 
         # if every thing go well the name and email well save to the database and redirect to the home page 
@@ -64,6 +65,6 @@ def index(): # function call when the route call
         db.session.add(newRecord) # save the email and the name to the database after the email is send
         db.session.commit() # save the change
         flash("Un E-mail have been send to the provite email!", "success") # show a message that the email hav been send
-        return redirect(url_for("home.index", title="IEEE")) # return the main page
+        return redirect(url_for("home.index", title="IEEE QRcode sytem")) # return the main page
 
-    return render_template("form.html", titel="IEEE") # render the main page if the request method is get
+    return render_template("form.html", titel="IEEE QRcode sytem") # render the main page if the request method is get
